@@ -1,0 +1,13 @@
+version: '3'
+services:
+  aws:
+    image: localstack/localstack:0.9.4
+    logging:
+      driver: none
+    ports:
+      - 4576:4576
+    volumes:
+      - ./initaws.d:/docker-entrypoint-initaws.d
+    environment:
+      - SERVICES=sqs
+      - DEFAULT_REGION=ap-southeast-2
